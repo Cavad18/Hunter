@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hunter // Admin</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #050505;
+            color: #e8e8e8;
+            font-family: monospace;
+            min-height: 100vh;
+        }
+
+        header {
+            height: 70px;
+            border-bottom: 1px solid #202020;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+        }
+
+        .logo {
+            color: #7cff00;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .status {
+            color: #7cff00;
+        }
+
+        .status::before {
+            content: "●";
+            margin-right: 8px;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: 50px auto;
+        }
+
+        .top {
+            margin-bottom: 40px;
+        }
+
+        .top small {
+            color: #7cff00;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-top: 12px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+        }
+
+        .sidebar,
+        .panel {
+            border: 1px solid #202020;
+            background: #090909;
+        }
+
+        .sidebar {
+            padding: 20px;
+        }
+
+        .sidebar h3 {
+            color: #7cff00;
+            margin-bottom: 20px;
+        }
+
+        .menu {
+            display: block;
+            padding: 13px;
+            color: #888;
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            margin-bottom: 5px;
+        }
+
+        .menu:hover,
+        .menu.active {
+            color: #7cff00;
+            background: #101010;
+            border-left-color: #7cff00;
+        }
+
+        .panel {
+            padding: 30px;
+        }
+
+        .panel-title {
+            color: #7cff00;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            border: 1px solid #202020;
+            padding: 20px;
+        }
+
+        .stat span {
+            display: block;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .stat strong {
+            color: #7cff00;
+            font-size: 22px;
+        }
+
+        .terminal {
+            border: 1px solid #202020;
+            background: #020202;
+            padding: 20px;
+            line-height: 1.8;
+            color: #7cff00;
+        }
+
+        .gray {
+            color: #555;
+        }
+
+        .warning {
+            margin-top: 20px;
+            border: 1px solid #302d15;
+            padding: 15px;
+            color: #aaa;
+        }
+
+        footer {
+            margin-top: 70px;
+            padding: 25px;
+            text-align: center;
+            color: #444;
+            border-top: 1px solid #202020;
+        }
+
+        @media (max-width: 700px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        HUNTER_
+    </div>
+
+    <div class="status">
+        ADMIN ONLINE
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="top">
+        <small>// RESTRICTED AREA</small>
+
+        <h1>ADMIN PANEL</h1>
+
+        <p class="subtitle">
+            Hunter Lab system management interface
+        </p>
+    </div>
+
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <h3>CONTROL</h3>
+
+            <a href="/" class="menu">
+                ← HOME
+            </a>
+
+        </aside>
+
+
+        <section class="panel">
+
+            <div class="panel-title">
+                // SYSTEM OVERVIEW
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span>SERVER</span>
+                    <strong>ONLINE</strong>
+                </div>
+
+                <div class="stat">
+                    <span>HUNTER</span>
+                    <strong>READY</strong>
+                </div>
+
+                <div class="stat">
+                    <span>MODE</span>
+                    <strong>LAB</strong>
+                </div>
+
+            </div>
+
+
+            <div class="terminal">
+
+                <span class="gray">root@hunter:~$</span>
+                system_info
+
+                <br>
+
+                [ OK ] Authentication service<br>
+                [ OK ] Database connection<br>
+                [ OK ] Web server<br>
+                [ OK ] Hunter scanner<br>
+                [ OK ] Local environment
+
+                <br><br>
+
+                <span class="gray">root@hunter:~$</span>
+                status
+
+                <br>
+
+                SYSTEM STATUS: <strong>OPERATIONAL</strong>
+
+            </div>
+
+
+            <div class="warning">
+                ⚠ This is a local Hunter training environment.
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer>
+    HUNTER LAB // ADMINISTRATION PANEL
+</footer>
+
+</body>
+</html>
