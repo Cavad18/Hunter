@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Hunter Lab</title>
+    <title>Hunter // Admin</title>
 
     <style>
         * {
@@ -17,11 +17,12 @@
             background: #050505;
             color: #e8e8e8;
             font-family: monospace;
+            min-height: 100vh;
         }
 
         header {
             height: 70px;
-            border-bottom: 1px solid #1f1f1f;
+            border-bottom: 1px solid #202020;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -32,6 +33,7 @@
             color: #7cff00;
             font-size: 24px;
             font-weight: bold;
+            letter-spacing: 3px;
         }
 
         .status {
@@ -43,153 +45,137 @@
             margin-right: 8px;
         }
 
-        nav a {
-            color: #aaa;
-            text-decoration: none;
-            margin-left: 30px;
+        .container {
+            width: min(1100px, 90%);
+            margin: 50px auto;
         }
 
-        nav a:hover {
+        .top {
+            margin-bottom: 40px;
+        }
+
+        .top small {
             color: #7cff00;
-        }
-
-        .hero {
-            min-height: 520px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-
-            background:
-                linear-gradient(rgba(5,5,5,.92), rgba(5,5,5,.96)),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 3px,
-                    rgba(124,255,0,.02) 4px
-                );
-        }
-
-        .small-title {
-            color: #7cff00;
-            font-size: 18px;
-            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 70px;
-            letter-spacing: 8px;
+            font-size: 42px;
+            margin-top: 12px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+        }
+
+        .sidebar,
+        .panel {
+            border: 1px solid #202020;
+            background: #090909;
+        }
+
+        .sidebar {
+            padding: 20px;
+        }
+
+        .sidebar h3 {
+            color: #7cff00;
             margin-bottom: 20px;
         }
 
-        h1 span {
-            color: #7cff00;
-        }
-
-        .description {
-            color: #999;
-            max-width: 650px;
-            line-height: 1.7;
-            font-size: 16px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            border: 1px solid #7cff00;
-            color: #7cff00;
+        .menu {
+            display: block;
+            padding: 13px;
+            color: #888;
             text-decoration: none;
-            transition: .2s;
+            border-left: 2px solid transparent;
+            margin-bottom: 5px;
         }
 
-        .button:hover {
-            background: #7cff00;
-            color: #000;
-            box-shadow: 0 0 25px rgba(124,255,0,.3);
-        }
-
-        .section {
-            padding: 60px 50px;
-            border-top: 1px solid #1f1f1f;
-        }
-
-        .section h2 {
+        .menu:hover,
+        .menu.active {
             color: #7cff00;
-            margin-bottom: 30px;
-            font-size: 25px;
+            background: #101010;
+            border-left-color: #7cff00;
         }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            border: 1px solid #202020;
-            background: #0a0a0a;
+        .panel {
             padding: 30px;
         }
 
-        .card:hover {
-            border-color: #7cff00;
+        .panel-title {
+            color: #7cff00;
+            font-size: 20px;
+            margin-bottom: 25px;
         }
 
-        .card h3 {
-            color: #fff;
-            margin-bottom: 15px;
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
-        .card p {
-            color: #777;
-            line-height: 1.6;
+        .stat {
+            border: 1px solid #202020;
+            padding: 20px;
+        }
+
+        .stat span {
+            display: block;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .stat strong {
+            color: #7cff00;
+            font-size: 22px;
         }
 
         .terminal {
-            margin-top: 50px;
-            background: #020202;
             border: 1px solid #202020;
-            padding: 25px;
+            background: #020202;
+            padding: 20px;
+            line-height: 1.8;
             color: #7cff00;
         }
 
-        .terminal span {
-            color: #666;
+        .gray {
+            color: #555;
+        }
+
+        .warning {
+            margin-top: 20px;
+            border: 1px solid #302d15;
+            padding: 15px;
+            color: #aaa;
         }
 
         footer {
-            padding: 30px;
+            margin-top: 70px;
+            padding: 25px;
             text-align: center;
-            color: #555;
-            border-top: 1px solid #1f1f1f;
+            color: #444;
+            border-top: 1px solid #202020;
         }
 
-        @media (max-width: 800px) {
-            header {
-                padding: 0 20px;
-            }
-
-            nav {
-                display: none;
-            }
-
-            h1 {
-                font-size: 45px;
-            }
-
-            .cards {
+        @media (max-width: 700px) {
+            .dashboard {
                 grid-template-columns: 1fr;
             }
 
-            .buttons {
-                flex-direction: column;
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 0 20px;
             }
         }
     </style>
@@ -200,99 +186,106 @@
 <header>
 
     <div class="logo">
-        HUNTER
+        HUNTER_
     </div>
 
-    <nav>
-        <a href="/">HOME</a>
-    </nav>
-
     <div class="status">
-        ONLINE
+        ADMIN ONLINE
     </div>
 
 </header>
 
 
-<section class="hero">
+<main class="container">
 
-    <div class="small-title">
-        // WEB CONTENT DISCOVERY LAB
-    </div>
+    <div class="top">
+        <small>// RESTRICTED AREA</small>
 
-    <h1>
-        HUNTER<span>_</span>
-    </h1>
+        <h1>ADMIN PANEL</h1>
 
-    <p class="description">
-        A local security laboratory designed for testing
-        web content discovery, enumeration and security research.
-    </p>
-
-    <div class="buttons">
-        <a class="button" href="#status">
-            SYSTEM INFO
-        </a>
-    </div>
-
-</section>
-
-
-<section class="section" id="status">
-
-    <h2>
-        // SYSTEM STATUS
-    </h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>SERVER</h3>
-            <p>
-                Status: ONLINE<br>
-                Port: 8000<br>
-                Environment: LOCAL
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>HUNTER</h3>
-            <p>
-                Status: READY<br>
-                Version: 0.1<br>
-                Scanner: ACTIVE
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>SECURITY</h3>
-            <p>
-                Mode: LAB<br>
-                Network: LOCALHOST<br>
-                Risk: LOW
-            </p>
-        </div>
-
+        <p class="subtitle">
+            Hunter Lab system management interface
+        </p>
     </div>
 
 
-    <div class="terminal">
-        <span>root@hunter:~$</span>
-        system_status
+    <div class="dashboard">
 
-        <br><br>
+        <aside class="sidebar">
 
-        [ OK ] Web server online<br>
-        [ OK ] Hunter environment ready<br>
-        [ OK ] Test environment loaded<br>
-        [ OK ] Waiting for scan...
+            <h3>CONTROL</h3>
+
+            <a href="/" class="menu">
+                ← HOME
+            </a>
+
+        </aside>
+
+
+        <section class="panel">
+
+            <div class="panel-title">
+                // SYSTEM OVERVIEW
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span>SERVER</span>
+                    <strong>ONLINE</strong>
+                </div>
+
+                <div class="stat">
+                    <span>HUNTER</span>
+                    <strong>READY</strong>
+                </div>
+
+                <div class="stat">
+                    <span>MODE</span>
+                    <strong>LAB</strong>
+                </div>
+
+            </div>
+
+
+            <div class="terminal">
+
+                <span class="gray">root@hunter:~$</span>
+                system_info
+
+                <br>
+
+                [ OK ] Authentication service<br>
+                [ OK ] Database connection<br>
+                [ OK ] Web server<br>
+                [ OK ] Hunter scanner<br>
+                [ OK ] Local environment
+
+                <br><br>
+
+                <span class="gray">root@hunter:~$</span>
+                status
+
+                <br>
+
+                SYSTEM STATUS: <strong>OPERATIONAL</strong>
+
+            </div>
+
+
+            <div class="warning">
+                ⚠ This is a local Hunter training environment.
+            </div>
+
+        </section>
+
     </div>
 
-</section>
+</main>
 
 
 <footer>
-    HUNTER LAB // LOCAL TEST ENVIRONMENT
+    HUNTER LAB // ADMINISTRATION PANEL
 </footer>
 
 </body>
